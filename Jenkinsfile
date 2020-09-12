@@ -23,10 +23,17 @@ pipeline {
                     sh "${scannerHome}/bin/sonar-scanner \
   -Dsonar.projectKey=BudgetCalc \
   -Dsonar.sources=. \
-  -Dsonar.host.url=http://35.226.149.126:8080 \
-  -Dsonar.login=4a38c68652c841ba5588d7de4ad18f0be15a7aa8"
+  -Dsonar.host.url=http://35.202.8.179:8080 \
+  -Dsonar.login=4f605276085c89f9a19a4b10e78aebeb9fc9d148"
                 }
             }
         }
+       stage('Docker Build') {
+            steps {
+                script {
+                    docker.build("budgetcalc:${env.BUILD_ID}")
+                }
+            }
+        }      
     }
 }
