@@ -34,6 +34,7 @@ pipeline {
                     docker.build("budgetcalc:${env.BUILD_ID}")
                 }
             }
+       }
          stage('Pushing Docker Image to DockerHub') {
             steps {
                 script {
@@ -45,4 +46,4 @@ pipeline {
             }
         }
     }
-    }
+}
