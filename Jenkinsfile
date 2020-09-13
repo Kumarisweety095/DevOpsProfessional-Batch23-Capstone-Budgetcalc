@@ -33,7 +33,8 @@ pipeline {
                 script {
                     docker.build("budgetcalc:${env.BUILD_ID}")
                 }
-            }stage('Pushing Docker Image to DockerHub') {
+            }
+         stage('Pushing Docker Image to DockerHub') {
             steps {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'docker_credential') {
@@ -43,6 +44,4 @@ pipeline {
                 }
             }
         }
-        }
-      
 }
