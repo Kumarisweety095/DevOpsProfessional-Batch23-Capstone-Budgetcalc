@@ -45,5 +45,12 @@ pipeline {
                 }
             }
         }
+      stage('Remove Unused docker image') 
+        {
+          steps
+          {
+            sh 'yes | docker image prune -a'
+          }
+        }
     }
 }
