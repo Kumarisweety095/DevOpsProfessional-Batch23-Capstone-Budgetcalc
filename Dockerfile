@@ -1,6 +1,11 @@
-FROM node:10
+FROM node:current-alpine AS build
 WORKDIR /usr/src/app
-COPY package*.json ./
+COPY package.json package-lock.json ./
 RUN npm install
-COPY . .
+RUN npm install -g @angular/cli
+RUN npm install bulma
+RUN npm uninstall node-sass && npm install node-sass
+EXPOSE 4200
 CMD [ "npm", "start" ]
+COPY . .
+RUN ng build
