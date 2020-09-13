@@ -49,7 +49,7 @@ pipeline {
         {
           steps
           {
-            sh 'yes | docker image prune -a'
+            sh "docker image prune -a -f"
           }
         }
     }
