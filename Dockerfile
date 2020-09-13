@@ -1,15 +1,11 @@
 #Stage 1
-FROM node:current-alpine AS build
-WORKDIR /usr/src/app
-COPY package.json package-lock.json ./
+FROM node:current-alpine as build
+RUN mkdir -p /app
+WORKDIR app
+COPY package.json /app
 RUN npm install
-RUN npm install -g @angular/cli
-RUN npm install bulma
-RUN npm uninstall node-sass && npm install node-sass
-EXPOSE 4200
-CMD [ "npm", "start" ]
-COPY . .
-RUN ng build
+COPY . /app
+RUN npm run build --prod
 # Stage 2
 FROM nginx:1.17.1-alpine
-COPY --from=build /dist/budget-app /usr/share/nginx/html
+COPY --from=build /app/dist/budget-app /usr/share/nginx/html
