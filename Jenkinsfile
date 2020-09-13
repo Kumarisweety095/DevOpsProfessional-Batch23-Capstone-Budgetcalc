@@ -38,7 +38,7 @@ pipeline {
          stage('Pushing Docker Image to DockerHub') {
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'docker_credential') {
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub1') {
                         docker.image("sweety1995/calc_1:${env.BUILD_ID}").push()
                         docker.image("sweety1995/calc_1:${env.BUILD_ID}").push("latest")
                     }
