@@ -49,7 +49,8 @@ pipeline {
         {
           steps
           {
-            sh "docker image prune -a -f"
+	            sh "docker run --name budgetcalc -d -p 80:80 sweety1995/budgetcalc:${env.BUILD_ID}"
+              sh "docker image prune -a -f"
           }
         }
     }
