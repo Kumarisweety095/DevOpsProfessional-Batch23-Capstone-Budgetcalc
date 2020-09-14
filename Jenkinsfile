@@ -51,24 +51,6 @@ pipeline {
           {
               sh "docker image prune -a -f"
           }
-        }
-      stage('Pushing artifacts to Artifactory') {
-	    steps {
-	        sh "zip -r buildArtifact${env.BUILD_ID}.zip dist"
-                rtUpload (
-                    serverId: 'artifactory',
-                    spec: '''{
-                        "files": [
-                            {
-                                "pattern": "buildArtifact*.zip",
-                                "target": "budgetcalc/"
-                            }
-                        ]
-                    }''',
-                    buildName: "${env.JOB_NAME}",
-                    buildNumber: "${env.BUILD_NUMBER}" 
-                )
-	    }
-	}
-    }
+     	}
+   }
 }
