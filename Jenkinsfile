@@ -52,5 +52,10 @@ pipeline {
               sh "docker image prune -a -f"
           }
      	}
+      stage('Deploy-Kubernetes') {
+            steps{
+                sh "ansible-playbook playbook.yml"
+            }
+        }
    }
 }
