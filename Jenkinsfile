@@ -49,8 +49,8 @@ pipeline {
         {
           steps
           {
-              sh "docker-compose -f budgetcalc_compose.yml up --force-recreate -abort-on-container-exit"
-              sh "docker-compose -f budgetcalc_compose.yml down -v"
+            sh "docker stop ${containerID}"
+              sh "docker rm ${containerID}"
               sh "docker run --name budgetcalc -d -p 80:80 sweety1995/budgetcalc:${env.BUILD_ID}"
               sh "docker image prune -a -f"
           }
