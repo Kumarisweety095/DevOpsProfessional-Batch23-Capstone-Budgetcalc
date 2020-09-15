@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: budgetcalc
+  namespace: capstone
+  labels:
+    name: budgetcalc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: budgetcalc-pod
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      name: budgetcalc-pod
+      labels:
+        name: budgetcalc-pod
+    spec:
+      containers:
+        - name:  budgetcalc
+          image: sweety1995/budgetcalc:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: budgetcalc-service
+  namespace: capstone
+  labels:
+    name: budgetcalc-service
+spec:
+  ports:
+    - port: 8080
+      targetPort: 80
+      nodePort: 32001
+  selector:
+    name: budgetcalc-pod
+  type: NodePort
