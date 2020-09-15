@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: budgetcalc
-  namespace: capstone
+  namespace: project
   labels:
     name: budgetcalc
 spec:
@@ -29,14 +29,14 @@ apiVersion: v1
 kind: Service
 metadata:
   name: budgetcalc-service
-  namespace: capstone
+  namespace: project
   labels:
     name: budgetcalc-service
 spec:
   ports:
     - port: 8080
       targetPort: 80
-      nodePort: 32001
+      nodePort: 30001
   selector:
     name: budgetcalc-pod
   type: NodePort
