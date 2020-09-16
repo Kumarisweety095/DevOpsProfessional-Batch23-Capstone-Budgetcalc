@@ -23,8 +23,8 @@ pipeline {
                     sh "${scannerHome}/bin/sonar-scanner \
   -Dsonar.projectKey=BudgetCalc \
   -Dsonar.sources=. \
-  -Dsonar.host.url=http://35.202.8.179:8080 \
-  -Dsonar.login=4f605276085c89f9a19a4b10e78aebeb9fc9d148"
+  -Dsonar.host.url=http://34.125.70.47 \
+  -Dsonar.login=f73447f452aa401f0b2874e789432571d60ff751"
                 }
             }
         }
