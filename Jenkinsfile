@@ -53,9 +53,10 @@ pipeline {
           }
      	}
       stage('Deploy-Kubernetes') {
-            steps{
-                sh "ansible-playbook playbook.yml"
-            }
+            kubernetesDeploy(
+              configs: 'budgetcalc.yml',
+              kubeconfigId:'kubernetes_cluster_config'
+              )
         }
    }
 }
