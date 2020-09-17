@@ -53,15 +53,12 @@ pipeline {
           }
      	}
       stage('Deploy-Kubernetes') {
-        {
-          steps
-          {
+        steps{
             kubernetesDeploy(
               configs: 'budgetcalc.yml',
               kubeconfigId:'kubernetes_cluster_config'
               )
           }
-        }
         }
    }
 }
