@@ -54,10 +54,7 @@ pipeline {
      	}
       stage('Deploy-Kubernetes') {
         steps{
-            kubernetesDeploy(
-              configs: 'budgetcalc.yml',
-              kubeconfigId:'kubernetes_cluster_config'
-              )
+           sh "budgetcalc.yml"
           }
         }
    }
