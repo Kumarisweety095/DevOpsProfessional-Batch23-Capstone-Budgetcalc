@@ -54,7 +54,7 @@ pipeline {
      	}
       stage('Deploy-Kubernetes') {
         steps{
-           sh "budgetcalc.yml"
+           sh "ansible-playbook playbook.yml"
           }
         }
    }
