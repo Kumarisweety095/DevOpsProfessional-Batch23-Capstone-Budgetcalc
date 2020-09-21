@@ -54,7 +54,7 @@ pipeline {
      	}
       stage('Deploy-Kubernetes') {
         steps{
-           sh "ansible-playbook -i /tmp/inv playbook.yml"
+           sh sudo su ansible -c "aansible-playbook -i /tmp/inv playbook.yml"
           }
         }
    }
