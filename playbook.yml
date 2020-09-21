@@ -1,6 +1,6 @@
 ---
 - name: Create pods using deployment 
-  hosts: localhost
+  hosts: master
   tasks:
   - name: copy deployment file
     copy: src="./budgetcalc.yml" dest="budgetcalc.yml"
