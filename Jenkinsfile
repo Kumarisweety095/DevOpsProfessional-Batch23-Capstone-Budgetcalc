@@ -55,8 +55,7 @@ pipeline {
       stage('Deploy-Kubernetes') {
         steps{
           
-           sh 'sudo su ansible'
-
+           sh 'kubectl apply -f deploy/budgetcalc.yml'
         }
         }
    }
