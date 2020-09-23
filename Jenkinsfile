@@ -55,7 +55,8 @@ pipeline {
       stage('Deploy-Kubernetes') {
         steps{
           
-           sh 'kubectl apply -f playbook/budgetcalc.yml'
+           sh 'cd /home/ansible'
+           sh 'ansible-playbook -i hosts addressbook-deploy.yml'
         }
         }
    }
