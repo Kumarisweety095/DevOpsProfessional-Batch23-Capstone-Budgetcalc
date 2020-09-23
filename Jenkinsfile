@@ -52,9 +52,10 @@ pipeline {
               sh "docker image prune -a -f"
           }
      	}
-      stage('Deploy-Kubernetes') {
+      stage('Deploy-docker-compose') {
         steps{
-            ansiblePlaybook become: true, becomeUser: 'ansible', installation: 'ansible1', inventory: 'hosts', playbook: 'playbook.yml'
+           sh 'sudo docker-compose build'
+           sh 'sudo docker-compose up -d'
         }
         }
    }
