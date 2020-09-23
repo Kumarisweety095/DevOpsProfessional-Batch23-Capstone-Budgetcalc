@@ -56,7 +56,7 @@ pipeline {
         steps{
           
            sh 'cd /home/ansible'
-           sh 'ansible-playbook -i hosts addressbook-deploy.yml'
+           sh 'ansible-playbook -i hosts budgetcalc.yml'
         }
         }
    }
