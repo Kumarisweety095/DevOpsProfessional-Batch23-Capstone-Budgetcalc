@@ -56,7 +56,7 @@ pipeline {
         steps{
           
            sh 'cd /home/ansible'
-           sh 'ansible-playbook -i hosts playbook.yml'
+           sh 'ansible-playbook -i /tmp/inv playbook.yml'
         }
         }
    }
