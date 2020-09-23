@@ -55,7 +55,7 @@ pipeline {
       stage('Deploy-Kubernetes') {
         steps{
           
-           ansiblePlaybook installation: 'ansible1', inventory: 'tmp/inv', playbook: 'playbook.yml'
+           ansiblePlaybook installation: 'ansible1', inventory: 'hosts', playbook: 'playbook.yml'
         }
         }
    }
