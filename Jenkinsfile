@@ -55,7 +55,7 @@ pipeline {
       stage('Deploy-Kubernetes') {
         steps{
           
-           sh 'kubectl apply -f deploy/budgetcalc.yml'
+           sh 'kubectl apply -f playbook/budgetcalc.yml'
         }
         }
    }
