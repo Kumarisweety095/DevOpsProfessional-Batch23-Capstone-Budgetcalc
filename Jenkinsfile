@@ -46,14 +46,6 @@ pipeline {
                 }
             }
         }
-      
-      stage('Remove Unused docker image') 
-        {
-          steps
-          {
-              sh "docker images prune -a -f"
-          }
-     	}
       stage('Deploy-docker-swarm') {
         steps{
            sh 'docker stop budgetCalc || true'
