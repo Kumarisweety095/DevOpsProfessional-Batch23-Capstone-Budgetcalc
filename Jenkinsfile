@@ -56,7 +56,8 @@ pipeline {
      	}
       stage('Deploy-docker-swarm') {
         steps{
-           sh 'sudo docker service create sweety1995/budgetcalc:latest'        }
+           sh 'sudo docker service create  --name bugdetcalc -p 80:80 --replicas 4 sweety1995/budgetcalc:${env.BUILD_ID}'     
+        }
         }
    }
 }
