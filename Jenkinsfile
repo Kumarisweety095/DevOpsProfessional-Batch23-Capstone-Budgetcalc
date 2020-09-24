@@ -56,7 +56,7 @@ pipeline {
      	}
       stage('Deploy-docker-swarm') {
         steps{
-           sh 'sudo docker service create --network budgetCalc --name -p 80:80 sweety1995/budgetcalc:${env.BUILD_ID}'
+           sh 'sudo docker service create --name budgetCalc --replicas 5 -p 8000:3000 sweety1995/budgetcalc:latest'
         }
         }
    }
