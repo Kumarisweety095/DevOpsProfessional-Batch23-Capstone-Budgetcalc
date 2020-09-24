@@ -51,11 +51,14 @@ pipeline {
         {
           steps
           {
-              sh "docker system prune -a -f"
+              sh "docker images prune -a -f"
           }
      	}
       stage('Deploy-docker-swarm') {
         steps{
+           sh 'docker stop budgetCalc || true'
+           sh 'docker rm budgetCalc || true'
+           sh 'docker rmi -f $(docker images -q) || true'
            sh 'sudo docker service create --name budgetCalc --replicas 5 -p 80:80 sweety1995/budgetcalc:latest'
         }
         }
