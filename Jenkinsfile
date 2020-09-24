@@ -35,6 +35,18 @@ pipeline {
                 }
             }
        }
+      
+      stage('Push image - Docker Hub') {
+            steps {
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub1') {
+                        docker.image("sweety1995/budgetcalc:${env.BUILD_ID}").push()
+                        docker.image("sweety1995/budgetcalc:${env.BUILD_ID}").push("latest")
+                    }
+                }
+            }
+        }
+      
       stage('Remove Unused docker image') 
         {
           steps
