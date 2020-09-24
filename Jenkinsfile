@@ -42,10 +42,9 @@ pipeline {
               sh "docker image prune -a -f"
           }
      	}
-      stage('Deploy-docker-compose') {
+      stage('Deploy-docker-swarm') {
         steps{
-           sh 'sudo docker-compose build'
-           sh 'sudo docker-compose up -d'
+           sh 'sudo docker service create --name budgetCal'
         }
         }
    }
