@@ -51,8 +51,7 @@ pipeline {
         {
           steps
           {
-              sh "docker image prune -a -f"
-              sh "docker container prune -f"
+              sh "docker system prune -a -f"
           }
      	}
       stage('Deploy-docker-swarm') {
