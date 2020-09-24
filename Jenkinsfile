@@ -44,8 +44,7 @@ pipeline {
      	}
       stage('Deploy-docker-swarm') {
         steps{
-           sh 'sudo docker service create --name budgetCal'
-        }
+           sh 'sudo docker service create sweety1995/budgetcalc:latest'        }
         }
    }
 }
