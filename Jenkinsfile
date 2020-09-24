@@ -56,7 +56,7 @@ pipeline {
      	}
       stage('Deploy-docker-swarm') {
         steps{
-           sh 'sudo docker stack deploy --compose-file docker-compose.yml sweety1995/budgetcalc:latest' 
+           sh 'sudo docker service create --network budgetCalc --name -p 80:80 sweety1995/budgetcalc:${env.BUILD_ID}'
         }
         }
    }
