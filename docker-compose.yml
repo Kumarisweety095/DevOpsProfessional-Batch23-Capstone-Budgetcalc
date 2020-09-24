@@ -1,8 +1,6 @@
-version: '2'
+version: '3'
 services:
   web:
     image: sweety1995/budgetcalc:latest
-    deploy:
-      replicas: 4
     ports:
       - "80:80"
