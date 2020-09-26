@@ -46,12 +46,18 @@ pipeline {
                 }
             }
         }
+      
+       stage("Remove Local Image"){
+        sh "docker rmi -f sweety1995/budgetcalc"
+         
+       }
+      
       stage('Deploy-docker-swarm') {
         steps{
-           sh 'docker stop budgetCalc || true'
-           sh 'docker rm budgetCalc || true'
-           sh 'sudo docker service create --name budgetCalc --replicas 5 -p 80:80 sweety1995/budgetcalc:latest'
+           sh 'docker stack rm budgetCalc'
+           sh 'docker stack deploy --prune --compose-file docker-compose.yml budgetCalc'
+        
         }
-        }
+      }
    }
 }
