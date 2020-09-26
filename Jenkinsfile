@@ -48,8 +48,9 @@ pipeline {
         }
       
        stage("Remove Local Image"){
+         steps {
         sh "docker rmi -f sweety1995/budgetcalc"
-         
+         }         
        }
       
       stage('Deploy-docker-swarm') {
