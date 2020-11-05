@@ -50,13 +50,13 @@ pipeline {
        stage("Remove Local Images & containers"){
          steps {
             sh "docker rmi -f sweety1995/budgetcalc"
-            sh 'docker stack rm budgetCalc'
+            sh 'docker stack rm budgetcalc'
          }         
        }
       
       stage('Deploy-docker-swarm') {
         steps{
-           sh 'docker stack deploy --prune --compose-file docker-compose.yml budgetCalc'
+           sh 'docker stack deploy --prune --compose-file docker-compose.yml budgetcalc'
         
         }
       }
