@@ -25,7 +25,7 @@ chrome_driver_binary = "/usr/bin/chromedriver"
 driver = webdriver.Chrome(chrome_driver_binary, options=option)
     
 def test():
-    driver.get('http://localhost:80')
+    driver.get('http://localhost:90')
     driver.implicitly_wait(10)
     driver.find_element_by_name("amount").click()
     driver.find_element_by_name("amount").clear()
