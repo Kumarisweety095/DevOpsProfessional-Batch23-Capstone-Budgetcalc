@@ -4,7 +4,6 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-             sh "docker swarm leave --force"
               sh "docker stop '${docker ps -aq}'"
             echo "docker container stopped"
               sh "docker rm '${docker ps -aq}'"
