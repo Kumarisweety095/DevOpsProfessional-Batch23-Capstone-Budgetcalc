@@ -4,10 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-             sh "Docker swarm leave --force"
-            echo "Docker container stopped"
-            sh "Docker rm '$(docker ps -aq)'"
-            echo "Docker container removed"
+          sh "Docker swarm leave --force"
           sh 'npm cache clean --force'
           sh 'rm -rf node_modules package-lock.json'
 	        sh 'npm install'
@@ -62,5 +59,13 @@ pipeline {
         
         }
       }
+           post { 
+        always { 
+          script{
+            sh 'yes | docker image prune'
+            echo "Dangled Images removed"
+          }
+        }
+    }
    }
 }
