@@ -14,20 +14,6 @@ pipeline {
           sh 'npm run build'          
             }
                 }
-       stage('SonarQube analysis') {
-            environment {
-                scannerHome = tool 'SonarQube Scanner 2.8';
-            }
-            steps {
-                withSonarQubeEnv('sonarqube') {
-                    sh "${scannerHome}/bin/sonar-scanner \
-  -Dsonar.projectKey=BudgetCalc \
-  -Dsonar.sources=. \
-  -Dsonar.host.url=http://34.125.103.99 \
-  -Dsonar.login=f73447f452aa401f0b2874e789432571d60ff751"
-                }
-            }
-        }
        stage('Docker Build') {
             steps {
                 script {
