@@ -4,11 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-              sh "docker stop '${docker ps -aq}'"
-            echo "docker container stopped"
-              sh "docker rm '${docker ps -aq}'"
-            echo "docker container removed"
-          sh 'npm cache clean --force'
+              sh 'npm cache clean --force'
           sh 'rm -rf node_modules package-lock.json'
 	        sh 'npm install'
           sh 'npm update'
