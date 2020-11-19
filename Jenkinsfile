@@ -5,9 +5,9 @@ pipeline {
         stage('Build') {
             steps {
              sh "Docker swarm leave --force"
-            sh "Docker stop '$(docker ps -aq)'"
+              sh "Docker stop '${docker ps -aq}'"
             echo "Docker container stopped"
-            sh "Docker rm '$(docker ps -aq)'"
+              sh "Docker rm '${docker ps -aq}'"
             echo "Docker container removed"
           sh 'npm cache clean --force'
           sh 'rm -rf node_modules package-lock.json'
