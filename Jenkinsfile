@@ -61,6 +61,7 @@ pipeline {
         always { 
           script{
             sh 'yes | docker image prune'
+            cleanWS()
             echo "Dangled Images removed"
           }
         }
