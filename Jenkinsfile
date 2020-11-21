@@ -26,7 +26,7 @@ pipeline {
        stage('Testing'){
         steps {
           script {
-            sh "docker run --name budgetcalc${env.BUILD_ID} -d -p 80:80 m1noj/budgetcalc:${env.BUILD_ID}"
+            sh "docker run --name budgetcalc${env.BUILD_ID} -d -p 80:80 sweety1995/budgetcalc:${env.BUILD_ID}"
             sh "google-chrome-stable --headless --disable-gpu"
 		        sh "pytest -v -s --html=test_result_${env.BUILD_ID}.html Test/Test.py"
             sh "docker container stop budgetcalc${env.BUILD_ID}"
