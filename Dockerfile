@@ -1,5 +1,5 @@
-# Stage 1
-FROM node:current-alpine as build
+# Stage 
+FROM node:12
 RUN mkdir -p /app
 WORKDIR app
 COPY package.json /app
