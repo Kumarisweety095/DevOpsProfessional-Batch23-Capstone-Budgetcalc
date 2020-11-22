@@ -1,5 +1,5 @@
 # Stage 
-FROM node:current-alpine as build
+FROM node:14-alpine
 RUN mkdir -p /app
 WORKDIR app
 COPY package.json /app
@@ -10,5 +10,5 @@ RUN npm uninstall node-sass && npm install node-sass
 COPY . /app
 RUN ng build
 # Stage 2
-FROM nginx:1.17.1-alpine
+FROM nginx:14-alpine
 COPY --from=build /app/dist/budget-app /usr/share/nginx/html
