@@ -1,4 +1,4 @@
-#Stage 1
+# Stage 1
 FROM node:current-alpine as build
 RUN mkdir -p /app
 WORKDIR app
