@@ -14,6 +14,17 @@ pipeline {
           sh 'npm run build'    
             }
                 }
+      
+       stage('SonarQube analysis') {
+            environment {
+                  scannerHome = tool 'SonarQube Scanner 2.8';
+            }
+            steps {
+                withSonarQubeEnv('sonarqube') {
+                 sh "${scannerHome}/bin/sonar-scanner"
+                }
+            }
+        }
        stage('Docker Build') {
             steps {
                 script {
