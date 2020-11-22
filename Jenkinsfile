@@ -1,6 +1,6 @@
 pipeline {
     agent { label 'master'}
-    tools { nodejs "node" }
+    tools { nodejs "nodejs" }
     stages {
         stage('Build') {
             steps {
