@@ -44,6 +44,11 @@ pipeline {
                 } 
             }
         }
+      stage('Deploy-docker-swarm') {
+        steps{
+           sh 'docker stack deploy --prune --compose-file docker-compose.yml budgetCalc'   
+          }
+           }
     }
   post { 
         always { 
