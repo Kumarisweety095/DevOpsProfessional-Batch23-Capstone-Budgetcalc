@@ -1,11 +1,10 @@
 # Stage 1
-FROM node:12
-RUN mkdir -p /app
-WORKDIR app
-COPY package.json /app
-RUN npm install
-RUN npm install -g @angular/cli
-RUN npm install bulma
-RUN npm uninstall node-sass && npm install node-sass
-COPY . /app
-RUN ng build
+From nginx:1.17.3-alpine
+
+RUN rm -rf /usr/share/nginx/html/*
+
+COPY nginx/nginx.conf /etc/nginx/nginx.conf
+
+COPY /dist/budget-app /usr/share/nginx/html
+
+CMD ["nginx", "-g", "daemon off;"]
