@@ -4,10 +4,6 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-            sh "docker stop '${docker ps -aq}'"
-            echo "docker container stopped"
-            sh "docker rm '${docker ps -aq}'"
-            echo "Docker container removed"
               sh 'npm cache clean --force'
           sh 'rm -rf node_modules package-lock.json'
 	        sh 'npm install'
@@ -15,7 +11,12 @@ pipeline {
           sh 'npm install -g @angular/cli'
           sh 'npm install bulma'
           echo "Module installed"
-          sh 'npm run build'    
+          sh 'npm run build'  
+        sh "Docker swarm leave --force"
+            sh "Docker stop '${docker ps -aq}'"
+            echo "Docker container stopped"
+            sh "Docker rm '${docker ps -aq}'"
+            echo "Docker container removed"
             }
                 }
       
