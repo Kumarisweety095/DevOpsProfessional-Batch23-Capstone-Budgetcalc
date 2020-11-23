@@ -33,17 +33,6 @@ pipeline {
                 }
             }
         }
-       stage('Stop previous Containers') {
-         steps {
-           script {
-            sh "Docker swarm leave --force"
-            sh "Docker stop '${docker ps -aq}'"
-            echo "Docker container stopped"
-            sh "Docker rm '${docker ps -aq}'"
-            echo "Docker container removed"
-                  }
-               }
-       }
       stage('Testing'){
         steps {
           script {
