@@ -12,10 +12,6 @@ pipeline {
           sh 'npm install bulma'
           echo "Module installed"
           sh 'npm run build'  
-            sh "Docker stop '${docker ps -aq}'"
-            echo "Docker container stopped"
-            sh "Docker rm '${docker ps -aq}'"
-            echo "Docker container removed"
             }
                 }
       
