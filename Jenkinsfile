@@ -43,8 +43,6 @@ pipeline {
             echo "Docker container stopped"
             sh "docker container rm budgetcalc${env.BUILD_ID}"
             echo "Docker container removed"
-            mail bcc: '', body: 'Testing Successfully', cc: '', from: '', replyTo: '', 
-        subject: 'Testing Completed Successfully' , to: 'manojbaradhwaj@gmail.com'
             }
          }
       }
