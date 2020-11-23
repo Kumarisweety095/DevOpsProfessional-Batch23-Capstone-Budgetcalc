@@ -2,6 +2,14 @@ pipeline {
     agent { label 'master'}
     tools { nodejs "nodejs" }
     stages {
+      stage('Stop Privious Containers') {
+                   sh "Docker swarm leave --force"
+            sh "Docker stop '${docker ps -aq}'"
+            echo "Docker container stopped"
+            sh "Docker rm '${docker ps -aq}'"
+            echo "Docker container removed"
+      }
+    }
         stage('Build') {
             steps {
               sh 'npm cache clean --force'
