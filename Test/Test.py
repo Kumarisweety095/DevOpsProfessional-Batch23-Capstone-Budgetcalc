@@ -23,8 +23,13 @@ options = webdriver.ChromeOptions()
 options.binary_location = "/usr/bin/google-chrome-stable"
 chrome_driver_binary = "/usr/bin/chromedriver"
 driver = webdriver.Chrome(chrome_driver_binary, options=option)
+  
+  def test0():
+    driver.get('http://localhost:80')
+    driver.implicitly_wait(10)
+    driver.close()
     
-def test():
+def test1():
     driver.get('http://localhost:80')
     driver.implicitly_wait(10)
     driver.find_element_by_name("amount").click()
