@@ -70,6 +70,8 @@ pipeline {
             cleanWs()
             echo "Dangled Images removed"
           }
+         mail bcc: '', body: 'Docker Swarm Deployed', cc: '', from: '', replyTo: '', 
+        subject: 'Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}' , to: 'manojbaradhwaj@gmail.com'
         }
     }
 }
