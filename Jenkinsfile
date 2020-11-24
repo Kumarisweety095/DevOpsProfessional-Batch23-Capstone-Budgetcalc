@@ -6,10 +6,10 @@ pipeline {
             steps {
           sh 'npm cache clean --force'
           sh 'rm -rf node_modules package-lock.json'
-          sh "Docker swarm leave --force"
-          sh "Docker stop '${docker ps -aq}'"
+          sh "docker swarm leave --force"
+          sh "docker stop '${docker ps -aq}'"
           echo "Docker container stopped"
-          sh "Docker rm '${docker ps -aq}'"
+          sh "docker rm '${docker ps -aq}'"
           echo "Docker container removed"
 	        sh 'npm install'
           sh 'npm update'
