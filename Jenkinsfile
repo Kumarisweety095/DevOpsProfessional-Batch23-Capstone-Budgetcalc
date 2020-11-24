@@ -4,7 +4,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-              sh 'npm cache clean --force'
+          sh "Docker swarm leave --force"
+          sh "Docker stop '${docker ps -aq}'"
+          echo "Docker container stopped"
+          sh "Docker rm '${docker ps -aq}'"
+          echo "Docker container removed"
+          sh 'npm cache clean --force'
           sh 'rm -rf node_modules package-lock.json'
 	        sh 'npm install'
           sh 'npm update'
@@ -69,9 +74,9 @@ pipeline {
             sh 'yes | docker image prune'
             cleanWs()
             echo "Dangled Images removed"
-          }
-         mail bcc: '', body: 'Docker Swarm Deployed', cc: '', from: '', replyTo: '', 
+            mail bcc: '', body: 'Docker Swarm Deployed', cc: '', from: '', replyTo: '', 
         subject: 'Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}' , to: 'manojbaradhwaj@gmail.com'
+          }
         }
     }
 }
