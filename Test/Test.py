@@ -22,7 +22,7 @@ global driver
 options = webdriver.ChromeOptions()
 options.binary_location = "/usr/bin/google-chrome-stable"
 chrome_driver_binary = "/usr/bin/chromedriver"
-driver = webdriver.chromedriver(chrome_driver_binary, options=option)
+driver = webdriver.Chrome(chrome_driver_binary, options=option)
 
 def test1():
     driver.get('http://localhost:80')
