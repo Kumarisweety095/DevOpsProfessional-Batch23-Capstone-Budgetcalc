@@ -66,6 +66,8 @@ pipeline {
         steps{
           sh 'docker swarm join --token SWMTKN-1-3kzx51v6mjf1zlr68b5yyd42b9p0fgeg4b2p8j19galakj80po-6pnapqc5jdtk7yt667g2058se 10.128.0.8:2377sudo docker swarm join --token SWMTKN-1-3kzx51v6mjf1zlr68b5yyd42b9p0fgeg4b2p8j19galakj80po-6pnapqc5jdtk7yt667g2058se 10.128.0.8:2377'
            sh 'docker stack deploy --prune --compose-file docker-compose.yml budgetCalc'   
+                      mail bcc: '', body: 'Docker Swarm Deployed', cc: '', from: '', replyTo: '', 
+        subject: 'Jenkins Job completed successful' , to: 'manojbaradhwaj@gmail.com'
           }
            }
     }
@@ -75,8 +77,6 @@ pipeline {
             sh 'yes | docker image prune'
             cleanWs()
             echo "Dangled Images removed"
-            mail bcc: '', body: 'Docker Swarm Deployed', cc: '', from: '', replyTo: '', 
-        subject: sh 'Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}' , to: 'manojbaradhwaj@gmail.com'
           }
         }
     }
