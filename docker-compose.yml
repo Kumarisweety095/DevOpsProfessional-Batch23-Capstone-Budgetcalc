@@ -3,4 +3,4 @@ services:
   web:
     image: sweety1995/budgetcalc:latest
     ports:
-      - "9000:80"
+      - "80:80"
