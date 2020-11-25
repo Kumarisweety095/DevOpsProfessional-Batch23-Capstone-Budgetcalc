@@ -20,7 +20,7 @@ option.add_argument('--disable-dev-shm-usage')
 
 global driver
 options = webdriver.ChromeOptions()
-options.binary_location = "/usr/bin/chromium-browser"
+options.binary_location = "/usr/bin/google-chrome-stable"
 chrome_driver_binary = "/usr/bin/chromedriver"
 driver = webdriver.Chrome(chrome_driver_binary, options=option)
 
